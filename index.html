@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nanta | Personal Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      background: #111;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: gold;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h2 {
+      font-weight: 400;
+      color: #aaa;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin: 10px 0;
+      color: #fff;
+    }
+
+    /* Text typing animation */
+    .typed {
+      margin-top: 5px;
+      color: gold;
+      font-size: 1.5rem;
+      border-right: 3px solid gold;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    .hero p {
+      margin-top: 15px;
+      color: #ccc;
+    }
+
+    .profile {
+      margin-top: 30px;
+    }
+
+    .profile img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid gold;
+      box-shadow: 0 0 20px gold;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <h2>Hello World, I'm</h2>
+    <h1>Nanta</h1>
+    <div class="typed" id="typed-text"></div>
+    <p>Welcome to my personal website. 👋</p>
+    <div class="profile">
+      <img src="https://github.com/crypto-zh1901/myprofile/foto.jpg" alt="Profile">
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi Everyone, saya Nanta 👋.
+    </p>
+  </section>
+
+  <section id="project">
+    <h2>Project</h2>
+    <p>Build Kernel On.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:nanta@gmail.com">muhammmadnantaa@gmail.com</a></p>
+    <p>Telegram: <a href="https://telegram.me/Nntazho" target="_blank">@Nntazho</a></p>
+  </section>
+
+  <script>
+    const texts = ["Developer", "Engginer", "Cracked"];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+    let isDeleting = false;
+
+    (function type(){
+      currentText = texts[count];
+      if (isDeleting) {
+        letter = currentText.slice(0, --index);
+      } else {
+        letter = currentText.slice(0, ++index);
+      }
+
+      document.getElementById('typed-text').textContent = letter;
+
+      if (!isDeleting && letter.length === currentText.length) {
+        isDeleting = true;
+        setTimeout(type, 1500); // pause sebelum hapus
+      } else if (isDeleting && letter.length === 0) {
+        isDeleting = false;
+        count = (count + 1) % texts.length; // looping
+        setTimeout(type, 200);
+      } else {
+        setTimeout(type, isDeleting ? 80 : 120);
+      }
+    })();
+  </script>
+
+</body>
+</html>
