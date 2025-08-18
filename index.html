@@ -165,38 +165,54 @@
 
       <div>
         <style>
-    #typing {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #00ffcc;
-      text-shadow: 0 0 10px #00ffcc;
-      border-right: 2px solid #00ffcc; /* efek cursor */
-      display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-  </style>
-</head>
-<body>
-  <h2 id="typing"></h2>
+ <h1>Hi Everyone, I'm <span style="color:#00ffcc">xiaozhng</span></h1>
+  <h2 class="subtitle">
+    <span id="typing" class="typing"></span>
+  </h2>
 
   <script>
-    const text = "Hi Everyone, I'm xiaozhng.";
+    const words = ["Developer", "Reverse Engineer", "Cracked Team"];
     let i = 0;
-    const speed = 100;
+    let j = 0;
+    let currentWord = "";
+    let isDeleting = false;
+    const speed = 120; // kecepatan ketik
 
-    function typeWriter() {
-      if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
+    function typeEffect() {
+      const typingElement = document.getElementById("typing");
+
+      if (i < words.length) {
+        if (!isDeleting && j <= words[i].length) {
+          currentWord = words[i].substring(0, j++);
+          typingElement.textContent = currentWord;
+        }
+
+        if (isDeleting && j >= 0) {
+          currentWord = words[i].substring(0, j--);
+          typingElement.textContent = currentWord;
+        }
+
+        if (j === words[i].length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 1000);
+          return;
+        }
+
+        if (isDeleting && j === 0) {
+          isDeleting = false;
+          i++;
+          if (i === words.length) i = 0;
+        }
       }
+
+      setTimeout(typeEffect, isDeleting ? speed / 2 : speed);
     }
-    window.onload = typeWriter;
+
+    typeEffect();
   </script>
 </body>
 </html>
-        
+
         <!-- Sosial media -->
         <div class="social" aria-label="Sosial Media">
           <!-- Instagram -->
