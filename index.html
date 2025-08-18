@@ -164,14 +164,40 @@
       </div>
 
       <div>
-        <h1>Hi, i'm xiaozho</h1>
-        <p class="subtitle">Developer • Reverse Engginer • Cracked Team</p>
+        <style>
+    #typing {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffcc;
+      border-right: 2px solid #00ffcc; /* efek cursor */
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="typing"></h2>
 
-        <div class="chips">
-          <span class="chip">Clean UI</span>
-          <span class="chip">Responsive</span>
-          <span class="chip">Fast & Minimal</span>
-        </div>
+  <script>
+    const text = "Hi, saya Nanta";
+    let i = 0;
+    const speed = 100;
+
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
+    window.onload = typeWriter;
+  </script>
+</body>
+</html>
+
 
         <!-- Sosial media -->
         <div class="social" aria-label="Sosial Media">
