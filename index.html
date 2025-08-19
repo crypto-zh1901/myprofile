@@ -186,27 +186,8 @@
     function typeEffect() {
       const typingElement = document.getElementById("typing");
 
-      if (i < words.length) {
-        if (!isDeleting && j <= words[i].length) {
-          currentWord = words[i].substring(0, j++);
-          typingElement.textContent = currentWord;
-        }
-
-        if (isDeleting && j >= 0) {
-          currentWord = words[i].substring(0, j--);
-          typingElement.textContent = currentWord;
-        }
-
-        if (j === words[i].length) {
-          isDeleting = true;
-          setTimeout(typeEffect, 1000);
-          return;
-        }
-
-        if (isDeleting && j === 0) {
-          isDeleting = false;
-          i++;
-          if (i === words.length) i = 0;
+      [i].substring(0, j--);
+          typingElement.textContent = currentWordl
         }
       }
 
