@@ -1,0 +1,66 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sandi Kurniawan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">NantaNotDev </div>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="text-left">
+      <h3>Hello World, I'm</h3>
+      <h1>M.Rody Mananta</h1>
+      <h2><span class="typewriter" id="typing"></span></h2>
+      <p>Welcome to my personal website. 👋🏻</p>
+    </div>
+    <div class="avatar">
+      <img src="logo.png" alt="Avatar" />
+    </div>
+  </section>
+
+  <!-- Script animasi typewriter -->
+  <script>
+    const texts = ["Web Developer", "Reverse Engineer"];
+    const speed = 80;
+    let index = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const target = document.getElementById("typing");
+
+    function typeEffect() {
+      const current = texts[index];
+      const updatedText = isDeleting
+        ? current.substring(0, charIndex--)
+        : current.substring(0, charIndex++);
+
+      target.textContent = updatedText;
+
+      if (!isDeleting && charIndex === current.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1000);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        index = (index + 1) % texts.length;
+        setTimeout(typeEffect, 300);
+      } else {
+        setTimeout(typeEffect, speed);
+      }
+    }
+
+    typeEffect();
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
